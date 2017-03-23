@@ -1,10 +1,11 @@
-import React from 'react';
-import { render } from 'react-dom';
+import "babel-polyfill";
+import React from "react";
+import { render } from "react-dom";
 
-import store from './store';
-import Root from './containers/Root';
+import store from "./store";
+import Root from "./containers/Root";
 
-import './index.html';
+import "./index.html";
 
 render(
     <Root store={ store }/>,

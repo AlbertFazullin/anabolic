@@ -1,9 +1,11 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import createLogger from 'redux-logger';
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
+import createSagaMiddleware from "redux-saga";
+import createLogger from "redux-logger";
 
-import DevTools from '../containers/devTools';
-import reducers from '../reducers';
+import rootSaga from "../sagas";
+
+import DevTools from "../containers/devTools";
+import reducers from "../reducers";
 
 const reducer = combineReducers(reducers);
 const saga = createSagaMiddleware();
@@ -19,3 +21,5 @@ const enhancer = compose(
 );
 
 export default createStore(reducer, {}, enhancer);
+
+saga.run(rootSaga);

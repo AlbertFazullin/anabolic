@@ -1,5 +1,4 @@
-// import objectAssign from 'object-assign'
+import objectAssign from "object-assign";
+import foo from "./foo";
 
-// export default objectAssign({}, reducer);
-
-export default {};
+export default objectAssign({}, foo);

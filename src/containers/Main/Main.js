@@ -3,12 +3,19 @@
  * 22.03.17
  */
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import actions from "../../actions/userActions";
 
-export default class Main extends Component {
+const { signUpRequest } = actions;
+
+class Main extends Component {
   render() {
     return (
-            <div>well, hello</div>
+      <div onClick={ () => { this.props.dispatch(signUpRequest('foo', 'bar')); } }>well, hello</div>
     );
   }
 }
+
+export default connect(store => ({}))(Main);
+
