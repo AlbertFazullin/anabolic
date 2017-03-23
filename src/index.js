@@ -12,7 +12,7 @@ render(
 );
 
 if (module.hot) {
-    module.hot.accept('./containers/root/index', () => {
+    module.hot.accept('./containers/Root/index', () => {
         const NewRoot = require('./containers/Root/index').default;
         render(
             <NewRoot store={store}/>,
