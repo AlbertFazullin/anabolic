@@ -4,13 +4,13 @@ import { Provider } from 'react-redux';
 import Main from '../Main/Main';
 
 const Root = ({ store }) => (
-    <Provider store={store}>
+    <Provider store={ store }>
         <Main/>
     </Provider>
 );
 
 Root.propTypes = {
-    store: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired,
 };
 
 export default Root;

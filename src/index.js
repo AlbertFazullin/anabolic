@@ -7,16 +7,16 @@ import Root from './containers/Root';
 import './index.html';
 
 render(
-    <Root store={store}/>,
+    <Root store={ store }/>,
     document.getElementById('root')
 );
 
 if (module.hot) {
-    module.hot.accept('./containers/Root/index', () => {
-        const NewRoot = require('./containers/Root/index').default;
-        render(
-            <NewRoot store={store}/>,
+  module.hot.accept('./containers/Root/index', () => {
+    const NewRoot = require('./containers/Root/index').default;
+    render(
+            <NewRoot store={ store }/>,
             document.getElementById('root')
         );
-    });
+  });
 }
