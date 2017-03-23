@@ -1,5 +1,7 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import createSagaMiddleware from "redux-sage";
+import { routerReducer } from 'react-router-redux';
+import objectAssign from 'object-assign';
 
 import rootSaga from "../sagas";
 
@@ -8,7 +10,9 @@ import reducers from "../reducers";
 const initialState = {};
 
 const saga = createSagaMiddleware();
-const rootReducer = combineReducers(reducers);
+const rootReducer = combineReducers(objectAssign({}, reducers, {
+  routing: routerReducer,
+}));
 
 const enhancer = compose(
     applyMiddleware(saga),
