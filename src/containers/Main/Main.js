@@ -5,6 +5,11 @@
 
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
+
+import Footer from '../../components/common/Footer/Footer';
+import Header from '../../components/common/Header/Header';
+
+import s from './main.pcss';
 import actions from "../../actions/userActions";
 
 const { signUpRequest } = actions;
@@ -23,7 +28,15 @@ class Main extends Component {
 
   render() {
     return (
-      <div onClick={ this._onClick }>well, hello</div>
+      <div className={ s.wrapper }>
+        <div className={ s.header }>
+          <Header/>
+        </div>
+        <div className={ s.content } onClick={ this._onClick }>well, hello</div>
+        <div className={ s.footer }>
+          <Footer />
+        </div>
+      </div>
     );
   }
 }
@@ -33,4 +46,3 @@ Main.propTypes = {
 };
 
 export default connect(store => ({}))(Main);
-
