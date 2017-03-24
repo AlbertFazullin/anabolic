@@ -8,13 +8,13 @@ export default class Header extends Component {
       <div className={ s.header }>
         <ul>
           <li>
-            <IndexLink to="/" activeClassName={ s.active }>/main</IndexLink>
+            <IndexLink to="/" activeClassName={ s.active }>JWT</IndexLink>
           </li>
           <li>
-            <Link to="/sign-in" activeClassName={ s.active }>/sign-in</Link>
+            <Link to="/sign-in" activeClassName={ s.active }>Sign In</Link>
           </li>
           <li>
-            <Link to="/sign-up" activeClassName={ s.active }>/sign-up</Link>
+            <Link to="/sign-up" activeClassName={ s.active }>Sign Up</Link>
           </li>
         </ul>
       </div>
