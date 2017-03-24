@@ -85,7 +85,7 @@ export default class SignUpForm extends Component {
               err={ passwordError }
               onChange={ this._onPasswordChange }
             />
-            <Button type="submit">Sign Up</Button>
+            <Button disabled={ usernameError || passwordError } type="submit">Sign Up</Button>
           </form>
         </div>
       </div>
