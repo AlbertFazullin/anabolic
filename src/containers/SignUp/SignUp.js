@@ -1,12 +1,31 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import Footer from '../../components/common/Footer/Footer';
 import Header from '../../components/common/Header/Header';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 
 import s from './signUp.pcss';
+import actions from "../../actions/userActions";
 
-export default class SignUp extends Component {
+const { signUpRequest } = actions;
+
+class SignUp extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+  }
+
+  constructor(props) {
+    super(props);
+
+    this._onSubmit = ::this._onSubmit;
+  }
+
+  _onSubmit(username, password) {
+    const { dispatch } = this.props;
+    dispatch(signUpRequest(username, password));
+  }
+
   render() {
     return (
       <div className={ s.wrapper }>
@@ -14,8 +33,7 @@ export default class SignUp extends Component {
           <Header/>
         </div>
         <div className={ s.content }>
-          <SignUpForm />
-
+          <SignUpForm onSubmit={ this._onSubmit }/>
         </div>
         <div className={ s.footer }>
           <Footer />
@@ -24,3 +42,5 @@ export default class SignUp extends Component {
     );
   }
 }
+
+export default connect(store => ({}))(SignUp);

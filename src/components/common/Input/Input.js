@@ -5,7 +5,7 @@ import s from './input.pcss';
 
 export default class Input extends Component {
   static propTypes = {
-    err: PropTypes.string,
+    err: PropTypes.bool,
   }
 
   constructor(props) {
@@ -23,9 +23,9 @@ export default class Input extends Component {
     });
 
     return (
-            <div className={ inputWrapper }>
-                <input type="text" { ...rest } />
-            </div>
+      <div className={ inputWrapper }>
+          <input type="text" { ...rest } />
+      </div>
     );
   }
 }
