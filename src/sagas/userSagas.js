@@ -3,9 +3,10 @@
  */
 import { registerUser, loginUser } from './api';
 import { browserHistory } from 'react-router';
-import { put, takeLatest, call } from "redux-saga/effects";
-import type from "../actions/actionTypes";
-import actions from "../actions/userActions";
+import { put, takeLatest, call } from 'redux-saga/effects';
+import type from '../actions/actionTypes';
+import actions from '../actions/userActions';
+import Auth from '../lib/Auth';
 
 const { signUpSuccess, signUpFailure, signInSuccess, signInFailure } = actions;
 
@@ -30,9 +31,14 @@ export function* signInSaga() {
 function* signIn(action) {
   try {
     const res = yield call(loginUser, action.payload);
+    Auth.authenticateUser(res.body.token.auth_token, res.body.token.refres_token);
     yield put(signInSuccess(res.body.token));
     browserHistory.push('/');
   } catch (e) {
     yield put(signInFailure(e));
   }
+}
+
+export function* logoutSaga() {
+  yield takeLatest(type.LOGOUT, Auth.deauthenticateUser);
 }

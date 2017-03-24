@@ -8,7 +8,7 @@ import SignInForm from '../../components/SignInForm/SignInForm';
 import s from './signIn.pcss';
 import actions from "../../actions/userActions";
 
-const { signInRequest } = actions;
+const { signInRequest, logout } = actions;
 
 class SignIn extends Component {
   static propTypes = {
@@ -26,11 +26,16 @@ class SignIn extends Component {
     dispatch(signInRequest(username, password));
   }
 
+  _onLogout() {
+    const { dispatch } = this.props;
+    dispatch(logout());
+  }
+
   render() {
     return (
       <div className={ s.wrapper }>
         <div className={ s.header }>
-          <Header/>
+          <Header onLogout={ this._onLogout }/>
         </div>
         <div className={ s.content }>
           <SignInForm onSubmit={ this._onSubmit } />

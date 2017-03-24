@@ -11,12 +11,13 @@ const config = {
   devtool: isProd ? '' : 'eval-source-map',
   context: sourcePath,
   entry: {
-    js: './index.js',
+    bundle: './index.js',
     vendor: ['react'],
+    ajaxHook: './lib/ajaxHook.js',
   },
   output: {
     path: staticsPath,
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -62,6 +63,7 @@ const config = {
         loader: 'babel-loader',
         options: {
           presets: ['es2015', 'react', 'stage-0'],
+          plugins: ['transform-decorators-legacy'],
         },
       },
       {

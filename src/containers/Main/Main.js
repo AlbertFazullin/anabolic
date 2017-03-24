@@ -3,21 +3,42 @@
  * 22.03.17
  */
 
-import React, { Component } from "react";
+import React, { Component, PropTypes } from 'react';
+import jwtContext from '../../lib/jwtContext';
+import { connect } from 'react-redux';
 
 import Footer from '../../components/common/Footer/Footer';
 import Header from '../../components/common/Header/Header';
 
 import s from './main.pcss';
+import actions from "../../actions/userActions";
 
-export default class Main extends Component {
+const { logout } = actions;
+
+@jwtContext
+class Main extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+  }
+
+  constructor(props) {
+    super(props);
+
+    this._onLogout = ::this._onLogout;
+  }
+
+  _onLogout() {
+    const { dispatch } = this.props;
+    dispatch(logout());
+  }
+
   render() {
     return (
       <div className={ s.wrapper }>
         <div className={ s.header }>
-          <Header/>
+          <Header onLogout={ this._onLogout } />
         </div>
-        <div className={ s.content } onClick={ this._onClick }>well, hello</div>
+        <div className={ s.content }>well, hello</div>
         <div className={ s.footer }>
           <Footer />
         </div>
@@ -25,3 +46,5 @@ export default class Main extends Component {
     );
   }
 }
+
+export default connect(() => ({}))(Main);

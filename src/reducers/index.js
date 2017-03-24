@@ -1,4 +1,4 @@
 import objectAssign from "object-assign";
-import foo from "./foo";
+import token from "./token";
 
-export default objectAssign({}, foo);
+export default objectAssign({}, token);

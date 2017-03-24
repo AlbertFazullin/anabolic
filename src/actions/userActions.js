@@ -13,4 +13,6 @@ export default {
   signUpRequest: actionCreator(type.SIGN_UP_REQUEST, 'username', 'password'),
   signUpSuccess: actionCreator(type.SIGN_UP_SUCCESS),
   signUpFailure: actionCreator(type.SIGN_UP_FAILURE, 'error'),
+
+  logout: actionCreator(type.LOGOUT),
 };

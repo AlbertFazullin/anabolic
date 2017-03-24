@@ -8,7 +8,7 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import s from './signUp.pcss';
 import actions from "../../actions/userActions";
 
-const { signUpRequest } = actions;
+const { signUpRequest, logout } = actions;
 
 class SignUp extends Component {
   static propTypes = {
@@ -26,11 +26,16 @@ class SignUp extends Component {
     dispatch(signUpRequest(username, password));
   }
 
+  _onLogout() {
+    const { dispatch } = this.props;
+    dispatch(logout());
+  }
+
   render() {
     return (
       <div className={ s.wrapper }>
         <div className={ s.header }>
-          <Header/>
+          <Header onLogout={ this._onLogout }/>
         </div>
         <div className={ s.content }>
           <SignUpForm onSubmit={ this._onSubmit }/>
