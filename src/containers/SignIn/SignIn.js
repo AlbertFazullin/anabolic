@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Footer from '../../components/common/Footer/Footer';
-import Header from '../../components/common/Header/Header';
+import Wrapper, { Header, Content, Footer } from '../../components/Container/Container';
+
+import FooterComponent from '../../components/common/Footer/Footer';
+import MenuComponent from '../../components/common/Menu/Menu';
 import SignInForm from '../../components/SignInForm/SignInForm';
 
-import s from './signIn.pcss';
 import actions from "../../actions/userActions";
 
 const { signInRequest, logout } = actions;
@@ -13,7 +14,7 @@ const { signInRequest, logout } = actions;
 class SignIn extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -33,17 +34,17 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div className={ s.wrapper }>
-        <div className={ s.header }>
-          <Header onLogout={ this._onLogout }/>
-        </div>
-        <div className={ s.content }>
+      <Wrapper>
+        <Header>
+          <MenuComponent onLogout={ this._onLogout } />
+        </Header>
+        <Content>
           <SignInForm onSubmit={ this._onSubmit } />
-        </div>
-        <div className={ s.footer }>
-          <Footer />
-        </div>
-      </div>
+        </Content>
+        <Footer>
+          <FooterComponent />
+        </Footer>
+      </Wrapper>
     );
   }
 }

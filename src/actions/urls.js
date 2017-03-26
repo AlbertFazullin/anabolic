@@ -1,4 +1,4 @@
-const serverUrl = 'http://bb126c1c.ngrok.io';
+const serverUrl = 'https://jwt-api-hackathon-fs.herokuapp.com';
 export const registerUrl = `${serverUrl}/api/v1/users/`;
 export const loginUrl = `${serverUrl}/api/v1/sessions/`;
 

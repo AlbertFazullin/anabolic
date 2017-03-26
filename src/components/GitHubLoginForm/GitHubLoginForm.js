@@ -21,7 +21,7 @@ export default class GitHubLoginForm extends Component {
     this.state = {
       username: '',
 
-      usernameError: false,
+      usernameError: true,
     };
   }
 

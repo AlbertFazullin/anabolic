@@ -7,7 +7,7 @@ import s from './signUpForm.pcss';
 export default class SignUpForm extends Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
-  }
+  };
 
   constructor(props, state) {
     super(props, state);
@@ -20,8 +20,8 @@ export default class SignUpForm extends Component {
       username: '',
       password: '',
 
-      usernameError: false,
-      passwordError: false,
+      usernameError: true,
+      passwordError: true,
     };
   }
 

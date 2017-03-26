@@ -20,8 +20,8 @@ export default class SignInForm extends Component {
       username: '',
       password: '',
 
-      usernameError: false,
-      passwordError: false,
+      usernameError: true,
+      passwordError: true,
     };
   }
 

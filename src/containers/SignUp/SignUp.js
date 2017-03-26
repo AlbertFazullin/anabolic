@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Footer from '../../components/common/Footer/Footer';
-import Header from '../../components/common/Header/Header';
+import Wrapper, { Header, Content, Footer } from '../../components/Container/Container';
+
+import FooterComponent from '../../components/common/Footer/Footer';
+import MenuComponent from '../../components/common/Menu/Menu';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 
-import s from './signUp.pcss';
 import actions from "../../actions/userActions";
 
 const { signUpRequest, logout } = actions;
@@ -13,7 +14,7 @@ const { signUpRequest, logout } = actions;
 class SignUp extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -33,17 +34,17 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className={ s.wrapper }>
-        <div className={ s.header }>
-          <Header onLogout={ this._onLogout }/>
-        </div>
-        <div className={ s.content }>
-          <SignUpForm onSubmit={ this._onSubmit }/>
-        </div>
-        <div className={ s.footer }>
-          <Footer />
-        </div>
-      </div>
+      <Wrapper>
+        <Header>
+          <MenuComponent onLogout={ this._onLogout } />
+        </Header>
+        <Content>
+          <SignUpForm onSubmit={ this._onSubmit } />
+        </Content>
+        <Footer>
+          <FooterComponent />
+        </Footer>
+      </Wrapper>
     );
   }
 }

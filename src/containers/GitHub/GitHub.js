@@ -4,11 +4,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Footer from '../../components/common/Footer/Footer';
-import Header from '../../components/common/Header/Header';
+import Wrapper, { Header, Content, Footer } from '../../components/Container/Container';
+
+import FooterComponent from '../../components/common/Footer/Footer';
+import MenuComponent from '../../components/common/Menu/Menu';
 import GitHubLoginForm from '../../components/GitHubLoginForm/GitHubLoginForm';
 
-import s from './github.pcss';
 import actions from "../../actions/gitHubActions";
 
 const { logout, fetchGhUserRequest } = actions;
@@ -36,17 +37,17 @@ class GitHub extends Component {
 
   render() {
     return (
-      <div className={ s.wrapper }>
-        <div className={ s.header }>
-          <Header onLogout={ this._onLogout }/>
-        </div>
-        <div className={ s.content }>
+      <Wrapper>
+        <Header>
+          <MenuComponent onLogout={ this._onLogout } />
+        </Header>
+        <Content>
           <GitHubLoginForm onSubmit={ this._onSubmit }/>
-        </div>
-        <div className={ s.footer }>
-          <Footer />
-        </div>
-      </div>
+        </Content>
+        <Footer>
+          <FooterComponent />
+        </Footer>
+      </Wrapper>
     );
   }
 }

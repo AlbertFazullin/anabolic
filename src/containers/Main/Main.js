@@ -7,10 +7,12 @@ import React, { Component, PropTypes } from 'react';
 import jwtContext from '../../lib/jwtContext';
 import { connect } from 'react-redux';
 
-import Footer from '../../components/common/Footer/Footer';
-import Header from '../../components/common/Header/Header';
+import Wrapper, { Header, Content, Footer } from '../../components/Container/Container';
 
-import s from './main.pcss';
+import FooterComponent from '../../components/common/Footer/Footer';
+import MenuComponent from '../../components/common/Menu/Menu';
+
+import './main.pcss';
 import actions from "../../actions/userActions";
 
 const { logout } = actions;
@@ -19,7 +21,7 @@ const { logout } = actions;
 class Main extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -34,15 +36,15 @@ class Main extends Component {
 
   render() {
     return (
-      <div className={ s.wrapper }>
-        <div className={ s.header }>
-          <Header onLogout={ this._onLogout } />
-        </div>
-        <div className={ s.content }>well, hello</div>
-        <div className={ s.footer }>
-          <Footer />
-        </div>
-      </div>
+      <Wrapper>
+        <Header>
+          <MenuComponent onLogout={ this._onLogout } />
+        </Header>
+        <Content>well, hello</Content>
+        <Footer>
+          <FooterComponent />
+        </Footer>
+      </Wrapper>
     );
   }
 }

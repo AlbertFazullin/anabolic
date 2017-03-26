@@ -31,7 +31,7 @@ export function* signInSaga() {
 function* signIn(action) {
   try {
     const res = yield call(loginUser, action.payload);
-    Auth.authenticateUser(res.body.token.auth_token, res.body.token.refres_token);
+    Auth.authenticateUser(res.body.token.auth_token, res.body.token.refresh_token);
     yield put(signInSuccess(res.body.token));
     browserHistory.push('/');
   } catch (e) {
