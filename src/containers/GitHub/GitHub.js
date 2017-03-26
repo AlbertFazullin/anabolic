@@ -3,6 +3,7 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import jwtContext from '../../lib/jwtContext';
 
 import Wrapper, { Header, Content, Footer } from '../../components/Container/Container';
 
@@ -10,10 +11,13 @@ import FooterComponent from '../../components/common/Footer/Footer';
 import MenuComponent from '../../components/common/Menu/Menu';
 import GitHubLoginForm from '../../components/GitHubLoginForm/GitHubLoginForm';
 
-import actions from "../../actions/gitHubActions";
+import ghActions from "../../actions/gitHubActions";
+import actions from "../../actions/userActions";
 
-const { logout, fetchGhUserRequest } = actions;
+const { fetchGhUserRequest } = ghActions;
+const { logout } = actions;
 
+@jwtContext
 class GitHub extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -23,6 +27,7 @@ class GitHub extends Component {
     super(props);
 
     this._onSubmit = ::this._onSubmit;
+    this._onLogout = ::this._onLogout;
   }
 
   _onSubmit(username) {

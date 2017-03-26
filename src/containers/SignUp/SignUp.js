@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import jwtContext from '../../lib/jwtContext';
 
 import Wrapper, { Header, Content, Footer } from '../../components/Container/Container';
 
@@ -11,6 +12,7 @@ import actions from "../../actions/userActions";
 
 const { signUpRequest, logout } = actions;
 
+@jwtContext
 class SignUp extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -20,6 +22,7 @@ class SignUp extends Component {
     super(props);
 
     this._onSubmit = ::this._onSubmit;
+    this._onLogout = ::this._onLogout;
   }
 
   _onSubmit(username, password) {

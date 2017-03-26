@@ -40,5 +40,10 @@ function* signIn(action) {
 }
 
 export function* logoutSaga() {
-  yield takeLatest(type.LOGOUT, Auth.deauthenticateUser);
+  yield takeLatest(type.LOGOUT, logout);
+}
+
+function* logout() {
+  Auth.deauthenticateUser();
+  browserHistory.push('/');
 }

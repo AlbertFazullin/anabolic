@@ -7,7 +7,7 @@ import s from './signInForm.pcss';
 export default class SignInForm extends Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
-  }
+  };
 
   constructor(props, state) {
     super(props, state);
