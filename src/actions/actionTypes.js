@@ -13,4 +13,8 @@ export default mirrorCreator([
   'SIGN_IN_FAILURE',
 
   'LOGOUT',
+
+  'FETCH_GH_USER_REQUEST',
+  'FETCH_GH_USER_SUCCESS',
+  'FETCH_GH_USER_FAILURE',
 ]);

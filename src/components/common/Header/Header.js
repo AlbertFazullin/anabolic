@@ -30,6 +30,9 @@ export default class Header extends Component {
           <li>
             <IndexLink to="/" activeClassName={ s.active }>JWT</IndexLink>
           </li>
+          <li>
+            <Link to="/github" activeClassName={ s.active }>GitHub</Link>
+          </li>
           {!isAuthenticated &&
             <li>
               <Link to="/sign-in" activeClassName={ s.active }>Sign In</Link>
