@@ -15,7 +15,7 @@ import MenuComponent from '../../components/common/Menu/Menu';
 import './main.pcss';
 import actions from "../../actions/userActions";
 
-const { logout } = actions;
+const { logout, getUsersRequest } = actions;
 
 @jwtContext
 class Main extends Component {
@@ -27,6 +27,11 @@ class Main extends Component {
     super(props);
 
     this._onLogout = ::this._onLogout;
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(getUsersRequest());
   }
 
   _onLogout() {

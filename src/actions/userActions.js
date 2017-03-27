@@ -14,5 +14,9 @@ export default {
   signUpSuccess: actionCreator(type.SIGN_UP_SUCCESS),
   signUpFailure: actionCreator(type.SIGN_UP_FAILURE, 'error'),
 
+  getUsersRequest: actionCreator(type.GET_USERS_REQUEST),
+  getUsersSuccess: actionCreator(type.GET_USERS_SUCCESS, 'users'),
+  getUsersFailure: actionCreator(type.GET_USERS_FAILURE, 'error'),
+
   logout: actionCreator(type.LOGOUT),
 };

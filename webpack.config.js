@@ -13,7 +13,6 @@ const config = {
   entry: {
     bundle: './index.js',
     vendor: ['react'],
-    ajaxHook: './lib/ajaxHook.js',
   },
   output: {
     path: staticsPath,

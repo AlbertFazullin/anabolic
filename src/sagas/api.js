@@ -1,5 +1,5 @@
 import request from 'superagent';
-import { registerUrl, loginUrl, userApiGitHub } from '../actions/urls';
+import { registerUrl, loginUrl, usersUrl, userApiGitHub } from '../actions/urls';
 
 export const registerUser = user =>
   request
@@ -10,6 +10,10 @@ export const registerUser = user =>
 export const loginUser = user => request
     .post(loginUrl)
     .send(user)
+    .set('Accept', 'application/json');
+
+export const listUsers = () => request
+    .get(usersUrl)
     .set('Accept', 'application/json');
 
 export const fetchUser = login => request

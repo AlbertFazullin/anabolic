@@ -1,7 +1,7 @@
 /**
  * Crafted by x22a on 24.03.17.
  */
-import { signUpSaga, signInSaga, logoutSaga } from './userSagas';
+import { signUpSaga, signInSaga, logoutSaga, getUsersSaga } from './userSagas';
 import fetchGhUserSaga from './gitHubSaga';
 
 export default function* rootSaga() {
@@ -9,6 +9,7 @@ export default function* rootSaga() {
     signUpSaga(),
     signInSaga(),
     logoutSaga(),
+    getUsersSaga(),
     fetchGhUserSaga(),
   ];
 }
