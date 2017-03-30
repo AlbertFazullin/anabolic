@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
-import createSagaMiddleware from "redux-sage";
+import createSagaMiddleware from "redux-saga";
 import { routerReducer } from 'react-router-redux';
 import objectAssign from 'object-assign';
 
