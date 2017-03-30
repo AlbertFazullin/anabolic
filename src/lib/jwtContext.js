@@ -9,7 +9,7 @@ const ContainerWrapperHOC = Container => {
     }
 
     render() {
-      return <Container jwtPayload={ payload } { ...this.props } />;
+      return <Container { ...this.props } />;
     }
   }
 
