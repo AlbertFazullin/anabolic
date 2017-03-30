@@ -1,24 +1,24 @@
 /**
- * Crafted by Aidar Ibatullin <amazing.space.invader@gmail.com>
- * 22.03.17
+ * Crafted by x22a on 26.03.17.
  */
-
 import React, { Component, PropTypes } from 'react';
-import jwtContext from '../../lib/jwtContext';
 import { connect } from 'react-redux';
+import jwtContext from '../../lib/jwtContext';
 
 import Wrapper, { Header, Content, Footer } from '../../components/Container/Container';
 
 import FooterComponent from '../../components/common/Footer/Footer';
 import MenuComponent from '../../components/common/Menu/Menu';
+import GitHubLoginForm from '../../components/GitHubLoginForm/GitHubLoginForm';
 
-import './main.pcss';
+import ghActions from "../../actions/gitHubActions";
 import actions from "../../actions/userActions";
 
-const { logout, getUsersRequest } = actions;
+const { fetchGhUserRequest } = ghActions;
+const { logout } = actions;
 
 @jwtContext
-class Main extends Component {
+class GitHub extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
   };
@@ -26,12 +26,13 @@ class Main extends Component {
   constructor(props) {
     super(props);
 
+    this._onSubmit = ::this._onSubmit;
     this._onLogout = ::this._onLogout;
   }
 
-  componentDidMount() {
+  _onSubmit(username) {
     const { dispatch } = this.props;
-    dispatch(getUsersRequest());
+    dispatch(fetchGhUserRequest(username));
   }
 
   _onLogout() {
@@ -45,7 +46,9 @@ class Main extends Component {
         <Header>
           <MenuComponent onLogout={ this._onLogout } />
         </Header>
-        <Content>well, hello</Content>
+        <Content>
+          <GitHubLoginForm onSubmit={ this._onSubmit }/>
+        </Content>
         <Footer>
           <FooterComponent />
         </Footer>
@@ -53,5 +56,4 @@ class Main extends Component {
     );
   }
 }
-
-export default connect(() => ({}))(Main);
+export default connect(store => ({}))(GitHub);

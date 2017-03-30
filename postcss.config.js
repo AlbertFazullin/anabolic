@@ -9,5 +9,15 @@ module.exports = {
   plugins: [
     require('postcss-import')({}),
     require('postcss-cssnext')({}),
+    require('postcss-font-magician')({
+      variants: {
+        'Khula': {
+          '300': [],
+          '400': [],
+          '700': [],
+        },
+      },
+      foundries: ['google'],
+    }),
   ],
 };

@@ -4,6 +4,10 @@ import { render } from "react-dom";
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
+import TokenHook, { catchToken, injectToken } from './lib/tokenHook';
+
+import { loginUrl, usersUrl } from './actions/urls';
+
 import store from "./store";
 import routes from './routes';
 import Root from "./containers/Root";
@@ -11,6 +15,10 @@ import Root from "./containers/Root";
 import "./index.html";
 
 const history = syncHistoryWithStore(browserHistory, store);
+const hook = new TokenHook();
+
+hook.installHook(loginUrl, catchToken);
+hook.installHook(usersUrl, injectToken);
 
 render(
     <Root store={ store } routing={ routes }

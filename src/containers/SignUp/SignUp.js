@@ -1,24 +1,19 @@
-/**
- * Crafted by Aidar Ibatullin <amazing.space.invader@gmail.com>
- * 22.03.17
- */
-
 import React, { Component, PropTypes } from 'react';
-import jwtContext from '../../lib/jwtContext';
 import { connect } from 'react-redux';
+import jwtContext from '../../lib/jwtContext';
 
 import Wrapper, { Header, Content, Footer } from '../../components/Container/Container';
 
 import FooterComponent from '../../components/common/Footer/Footer';
 import MenuComponent from '../../components/common/Menu/Menu';
+import SignUpForm from '../../components/SignUpForm/SignUpForm';
 
-import './main.pcss';
 import actions from "../../actions/userActions";
 
-const { logout, getUsersRequest } = actions;
+const { signUpRequest, logout } = actions;
 
 @jwtContext
-class Main extends Component {
+class SignUp extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
   };
@@ -26,12 +21,13 @@ class Main extends Component {
   constructor(props) {
     super(props);
 
+    this._onSubmit = ::this._onSubmit;
     this._onLogout = ::this._onLogout;
   }
 
-  componentDidMount() {
+  _onSubmit(username, password) {
     const { dispatch } = this.props;
-    dispatch(getUsersRequest());
+    dispatch(signUpRequest(username, password));
   }
 
   _onLogout() {
@@ -45,7 +41,9 @@ class Main extends Component {
         <Header>
           <MenuComponent onLogout={ this._onLogout } />
         </Header>
-        <Content>well, hello</Content>
+        <Content>
+          <SignUpForm onSubmit={ this._onSubmit } />
+        </Content>
         <Footer>
           <FooterComponent />
         </Footer>
@@ -54,4 +52,4 @@ class Main extends Component {
   }
 }
 
-export default connect(() => ({}))(Main);
+export default connect(store => ({}))(SignUp);
