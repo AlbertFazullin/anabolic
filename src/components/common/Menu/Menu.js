@@ -8,6 +8,11 @@ const Menu = ({ onLogout }, { isAuthenticated }) => (
       <li>
         <IndexLink to="/" activeClassName={ s.active }>JWT</IndexLink>
       </li>
+      {isAuthenticated &&
+      <li>
+        <Link to="/users" activeClassName={ s.active }>Users</Link>
+      </li>
+      }
       <li>
         <Link to="/github" activeClassName={ s.active }>GitHub</Link>
       </li>

@@ -4,7 +4,7 @@
 
 import actionTypes from '../actions/actionTypes';
 
-const users = (state = {}, { type, payload }) => {
+const users = (state = [], { type, payload }) => {
   if ( type === actionTypes.GET_USERS_SUCCESS ) {
     return payload.users;
   }
