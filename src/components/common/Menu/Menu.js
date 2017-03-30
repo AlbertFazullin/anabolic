@@ -2,12 +2,17 @@ import React, { PropTypes } from 'react';
 import { IndexLink, Link } from 'react-router';
 import s from './menu.pcss';
 
-const Menu = ({ onLogout }, { isAuthenticated }) => (
+const Menu = ({ onLogout }, { isAuthenticated, jwtPayload }) => (
   <nav className={ s.header }>
     <ul>
       <li>
         <IndexLink to="/" activeClassName={ s.active }>JWT</IndexLink>
       </li>
+      {isAuthenticated &&
+      <li>
+        <Link to="/" activeClassName={ s.active }>{jwtPayload.sub}</Link>
+      </li>
+      }
       {isAuthenticated &&
       <li>
         <Link to="/users" activeClassName={ s.active }>Users</Link>
@@ -37,6 +42,7 @@ const Menu = ({ onLogout }, { isAuthenticated }) => (
 
 Menu.contextTypes = {
   isAuthenticated: PropTypes.bool,
+  jwtPayload: PropTypes.object,
 };
 
 Menu.propTypes = {
