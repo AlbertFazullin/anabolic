@@ -4,11 +4,11 @@ import { render } from "react-dom";
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import TokenHook, { catchToken, injectToken } from './lib/tokenHook';
+import TokenHook, { catchToken, injectToken } from 'fs-jwt-xhr-hook';
 
 import { loginUrl, usersUrl } from './actions/urls';
 
-import store from "./store";
+import store from './store';
 import routes from './routes';
 import Root from "./containers/Root";
 

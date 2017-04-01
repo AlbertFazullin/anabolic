@@ -6,7 +6,7 @@ import objectAssign from 'object-assign';
 
 import rootSaga from '../sagas';
 
-import jwtDevMiddleware from '../lib/saveTokenMiddleware';
+import jwtMiddleware from 'fs-jwt-redux-devtools';
 import DevTools from '../containers/devTools';
 import reducers from '../reducers';
 import actionTypes from '../actions/actionTypes';
@@ -26,7 +26,7 @@ const logger = createLogger({
 
 const enhancer = compose(
     applyMiddleware(saga, logger),
-    applyMiddleware(jwtDevMiddleware([SIGN_IN_SUCCESS])),
+    applyMiddleware(jwtMiddleware([SIGN_IN_SUCCESS])),
     DevTools.instrument()
 );
 

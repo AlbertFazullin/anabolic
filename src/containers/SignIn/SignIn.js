@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import jwtContext from '../../lib/jwtContext';
+import jwtContext from 'fs-jwt-react-tools';
 
 import Wrapper, { Header, Content, Footer } from '../../components/Container/Container';
 
